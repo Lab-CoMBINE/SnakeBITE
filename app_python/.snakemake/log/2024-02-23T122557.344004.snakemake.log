@@ -1,0 +1,38 @@
+Building DAG of jobs...
+Retrieving input from storage.
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job stats:
+job        count
+-------  -------
+vep_vcf        1
+total          1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Feb 23 12:25:57 2024]
+localrule vep_vcf:
+    input: /data2/abimbocci/variant_calls.vcf.gz
+    output: /data2/mbaragli/python_app/app_python/work_dir/prv2/snv/prv2_vep.vcf
+    jobid: 0
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/prv2/snv/prv2_vep.vcf
+    wildcards: sample=prv2
+    resources: tmpdir=/tmp
+
+Activating conda environment: vep
+Terminating processes on user request, this might take some time.
+[Fri Feb 23 12:26:01 2024]
+Error in rule vep_vcf:
+    jobid: 0
+    input: /data2/abimbocci/variant_calls.vcf.gz
+    output: /data2/mbaragli/python_app/app_python/work_dir/prv2/snv/prv2_vep.vcf
+    conda-env: vep
+    shell:
+        vep -format vcf -i /data2/abimbocci/variant_calls.vcf.gz -o /data2/mbaragli/python_app/app_python/work_dir/prv2/snv/prv2_vep.vcf --vcf --assembly GRCh37 --everything      --database --fork 30
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Complete log: .snakemake/log/2024-02-23T122557.344004.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

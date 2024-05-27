@@ -1,0 +1,45 @@
+Building DAG of jobs...
+Retrieving input from storage.
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job            count
+-----------  -------
+sv_sniffles        1
+sv_svim            1
+total              2
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Wed Jan 31 11:06:28 2024]
+localrule sv_svim:
+    input: /data2/mbaragli/python_app/pipeline_snakemake/data/genome.fa, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/USER_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/USER_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/sv/USER_svim
+    jobid: 4
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/sv/USER_svim
+    wildcards: sample=USER
+    resources: tmpdir=/tmp
+
+Activating conda environment: svim_cutesv
+[Wed Jan 31 11:06:35 2024]
+Finished job 4.
+1 of 2 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Wed Jan 31 11:06:35 2024]
+localrule sv_sniffles:
+    input: /data2/mbaragli/python_app/pipeline_snakemake/data/genome.fa, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/USER_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/USER_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/sv/USER_sniffles.vcf
+    jobid: 0
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/sv/USER_sniffles.vcf
+    wildcards: sample=USER
+    resources: tmpdir=/tmp
+
+Activating conda environment: sniffles2
+[Wed Jan 31 11:06:36 2024]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: .snakemake/log/2024-01-31T110627.067626.snakemake.log

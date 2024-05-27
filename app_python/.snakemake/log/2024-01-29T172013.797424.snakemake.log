@@ -1,0 +1,57 @@
+Building DAG of jobs...
+Retrieving input from storage.
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job               count
+--------------  -------
+samtools_index        1
+snv_longshot          1
+sv_sniffles           1
+sv_svim               1
+total                 4
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Jan 29 17:20:14 2024]
+localrule samtools_index:
+    input: /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/USER_sorted.bam
+    output: /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/USER_sorted.bam.bai
+    jobid: 7
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/USER_sorted.bam.bai
+    wildcards: sample=USER
+    resources: tmpdir=/tmp
+
+[Mon Jan 29 17:20:14 2024]
+Finished job 7.
+1 of 4 steps (25%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Jan 29 17:20:14 2024]
+localrule snv_longshot:
+    input: /data2/mbaragli/python_app/pipeline_snakemake/data/genome.fa, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/USER_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/USER_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/snv/USER_longshot.vcf
+    jobid: 4
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/snv/USER_longshot.vcf; Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/USER_sorted.bam.bai
+    wildcards: sample=USER
+    resources: tmpdir=/tmp
+
+Activating conda environment: longshot2
+[Mon Jan 29 17:20:14 2024]
+Error in rule snv_longshot:
+    jobid: 4
+    input: /data2/mbaragli/python_app/pipeline_snakemake/data/genome.fa, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/USER_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/USER_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/snv/USER_longshot.vcf
+    conda-env: longshot2
+    shell:
+        longshot  --min_cov 6 --max_cov 8000 --min_mapq 20 --min_alt_count 3 --min_alt_frac 0.125  --bam /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/USER_sorted.bam --ref /data2/mbaragli/python_app/pipeline_snakemake/data/genome.fa --out /data2/mbaragli/python_app/app_python/work_dir/snv/USER_longshot.vcf
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-01-29T172013.797424.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

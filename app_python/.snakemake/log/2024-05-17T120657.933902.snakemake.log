@@ -1,0 +1,29 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job           count
+----------  -------
+snv_clair3        1
+total             1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri May 17 12:06:58 2024]
+localrule snv_clair3:
+    input: /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam.bai
+    output: /data2/abimbocci/work_dir/testrun_4_HG002/snv/testrun_4_HG002_clair3
+    jobid: 0
+    reason: Missing output files: /data2/abimbocci/work_dir/testrun_4_HG002/snv/testrun_4_HG002_clair3
+    wildcards: sample=testrun_4_HG002
+    threads: 8
+    resources: tmpdir=/tmp
+
+/data2/mbaragli/tools/Clair3/run_clair3.sh --bam_fn=/data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam --ref_fn=/data2/utility/references/genomics/Homo_sapiens_assembly38.fasta --output=/data2/abimbocci/work_dir/testrun_4_HG002/snv/testrun_4_HG002_clair3 --threads=8 --platform=ont --model_path /data2/mbaragli/tools/rerio/clair3_models/r1041_e82_400bps_sup_v430      
+Activating conda environment: nano_clair3
+[Fri May 17 15:49:21 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-05-17T120657.933902.snakemake.log

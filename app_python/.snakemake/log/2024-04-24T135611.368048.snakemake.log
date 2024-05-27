@@ -1,0 +1,27 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 5
+Rules claiming more threads will be scaled down.
+Job stats:
+job         count
+--------  -------
+minimap2        1
+total           1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Wed Apr 24 13:56:12 2024]
+localrule minimap2:
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/python_app/app_python/work_dir/data/samples/B.fastq
+    output: /data2/mbaragli/python_app/app_python/work_dir/B/mapped_reads/B.bam
+    jobid: 0
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/B/mapped_reads/B.bam
+    wildcards: sample=B
+    threads: 5
+    resources: tmpdir=/tmp
+
+[Wed Apr 24 13:57:27 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-04-24T135611.368048.snakemake.log

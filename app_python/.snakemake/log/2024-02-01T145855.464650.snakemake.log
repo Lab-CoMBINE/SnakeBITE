@@ -1,0 +1,59 @@
+Building DAG of jobs...
+Retrieving input from storage.
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job               count
+--------------  -------
+minimap2              1
+samtools_index        1
+samtools_sort         1
+total                 3
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Feb  1 14:58:55 2024]
+localrule minimap2:
+    input: /data2/mbaragli/python_app/pipeline_snakemake/data/genome.fa, /data2/mbaragli/python_app/app_python/work_dir/data/samples/C.fastq
+    output: /data2/mbaragli/python_app/app_python/work_dir/AHINOI/mapped_reads/AHINOI.bam
+    jobid: 2
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/AHINOI/mapped_reads/AHINOI.bam
+    wildcards: sample=AHINOI
+    resources: tmpdir=/tmp
+
+[Thu Feb  1 14:58:57 2024]
+Finished job 2.
+1 of 3 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Feb  1 14:58:57 2024]
+localrule samtools_sort:
+    input: /data2/mbaragli/python_app/app_python/work_dir/AHINOI/mapped_reads/AHINOI.bam
+    output: /data2/mbaragli/python_app/app_python/work_dir/AHINOI/sorted_reads/AHINOI_sorted.bam
+    jobid: 1
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/AHINOI/sorted_reads/AHINOI_sorted.bam; Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/AHINOI/mapped_reads/AHINOI.bam
+    wildcards: sample=AHINOI
+    resources: tmpdir=/tmp
+
+[Thu Feb  1 14:58:57 2024]
+Finished job 1.
+2 of 3 steps (67%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Feb  1 14:58:57 2024]
+localrule samtools_index:
+    input: /data2/mbaragli/python_app/app_python/work_dir/AHINOI/sorted_reads/AHINOI_sorted.bam
+    output: /data2/mbaragli/python_app/app_python/work_dir/AHINOI/sorted_reads/AHINOI_sorted.bam.bai
+    jobid: 0
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/AHINOI/sorted_reads/AHINOI_sorted.bam.bai; Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/AHINOI/sorted_reads/AHINOI_sorted.bam
+    wildcards: sample=AHINOI
+    resources: tmpdir=/tmp
+
+[Thu Feb  1 14:58:57 2024]
+Finished job 0.
+3 of 3 steps (100%) done
+Complete log: .snakemake/log/2024-02-01T145855.464650.snakemake.log

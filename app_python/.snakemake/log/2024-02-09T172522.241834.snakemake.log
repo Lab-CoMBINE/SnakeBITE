@@ -1,0 +1,40 @@
+Building DAG of jobs...
+Retrieving input from storage.
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                  count
+-----------------  -------
+sv_cutesv                1
+sv_cutesv_annotsv        1
+total                    2
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Feb  9 17:25:22 2024]
+localrule sv_cutesv:
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam, /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam.bai, /data2/mbaragli/python_app/app_python/work_dir/PROVA
+    output: /data2/mbaragli/python_app/app_python/work_dir/PROVA/sv/PROVA_cutesv.vcf
+    jobid: 1
+    reason: Updated input files: /data2/mbaragli/python_app/app_python/work_dir/PROVA
+    wildcards: sample=PROVA
+    resources: tmpdir=/tmp
+
+[Fri Feb  9 17:25:22 2024]
+Error in rule sv_cutesv:
+    jobid: 1
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam, /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam.bai, /data2/mbaragli/python_app/app_python/work_dir/PROVA
+    output: /data2/mbaragli/python_app/app_python/work_dir/PROVA/sv/PROVA_cutesv.vcf
+    conda-env: svim_cutesv
+    shell:
+        cuteSV        /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam /data2/utility/references/genomics/hs37d5.decoy.fa /data2/mbaragli/python_app/app_python/work_dir/PROVA/sv/PROVA_cutesv.vcf /data2/mbaragli/python_app/app_python/work_dir/PROVA
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-02-09T172522.241834.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

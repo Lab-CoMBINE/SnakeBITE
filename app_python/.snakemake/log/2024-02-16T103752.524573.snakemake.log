@@ -1,0 +1,53 @@
+Building DAG of jobs...
+Retrieving input from storage.
+Using shell: /usr/bin/bash
+Provided cores: 10
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+snv_longshot        1
+sv_sniffles         1
+total               2
+
+Select jobs to execute...
+Execute 2 jobs...
+
+[Fri Feb 16 10:37:52 2024]
+localrule sv_sniffles:
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/cores2/sv/cores2_sniffles.vcf
+    jobid: 0
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/cores2/sv/cores2_sniffles.vcf
+    wildcards: sample=cores2
+    resources: tmpdir=/tmp
+
+Activating conda environment: sniffles2
+
+[Fri Feb 16 10:37:53 2024]
+localrule snv_longshot:
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/cores2/snv/cores2_longshot.vcf
+    jobid: 1
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/cores2/snv/cores2_longshot.vcf
+    wildcards: sample=cores2
+    resources: tmpdir=/tmp
+
+Activating conda environment: longshot2
+[Fri Feb 16 10:59:29 2024]
+Finished job 0.
+1 of 2 steps (50%) done
+Terminating processes on user request, this might take some time.
+[Fri Feb 16 11:24:01 2024]
+Error in rule snv_longshot:
+    jobid: 1
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/cores2/snv/cores2_longshot.vcf
+    conda-env: longshot2
+    shell:
+        longshot  --min_cov 6 --max_cov 8000 --min_mapq 20 --min_alt_count 3 --min_alt_frac 0.125  --bam /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam --ref /data2/utility/references/genomics/hs37d5.decoy.fa --out /data2/mbaragli/python_app/app_python/work_dir/cores2/snv/cores2_longshot.vcf
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Complete log: .snakemake/log/2024-02-16T103752.524573.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

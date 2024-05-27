@@ -1,0 +1,33 @@
+Building DAG of jobs...
+Retrieving input from storage.
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+sv_som_gasoline        1
+total                  1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Feb 29 09:38:13 2024]
+localrule sv_som_gasoline:
+    input: /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/dajeeeeee, /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/Dajeeeeeeeeee.bam
+    output: /data2/mbaragli/python_app/app_python/work_dir/dajeeeeee/sv/dajeeeeee_gasoline/gasoline_final.vcf
+    jobid: 0
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/dajeeeeee/sv/dajeeeeee_gasoline/gasoline_final.vcf
+    wildcards: sample=dajeeeeee
+    resources: tmpdir=/tmp
+
+RuleException in rule sv_som_gasoline in file /data2/mbaragli/python_app/app_python/Snakefile, line 295:
+AttributeError: 'InputFiles' object has no attribute 'sample', when formatting the following:
+
+            cd /data2/mbaragli/tools/GASOLINE_1.1/
+            perl GASOLINEParse.pl -B {input.cntrl} -L Control -O {input.wd}/sv/{params.sample}_gasoline/control -R hg19 {params.qual} {params.bed}
+            perl GASOLINEGermlineDetector.pl -B {input.bam} -L Control -O {input.wd}/sv/{params.sample}_gasoline/control -NT {params.cores} {params.germ1} {params.germ2} {params.germ3} {params.germ4}
+            perl GASOLINEParse.pl -B {input.bam} -L Test -O {input.wd}/sv/{params.sample}_gasoline/test -R hg19 {params.qual} {params.bed}
+            perl GASOLINESomaticDetector.pl -BT {input.bam} -BC {input.cntrl} -LT Test -LC Control -LS TestControl -OT {input.wd}/sv/{input.sample}_gasoline/test -OC {input.wd}/sv/{input.sample}_gasoline/control -OS {input.wd}/sv/{input.sample}_gasoline/comparison -NT {params.cores} {params.som1} {params.som2} {params.som3} {params.som4}
+            perl GASOLINESomaticVCFCreate.pl -LT Test -LC Control -LS TestControl -IS {input.wd}/sv/{input.sample}_gasoline/comparison -OS {output} -RA hg19 -FR {input.fa} {params.somvcf1} {params.somvcf2} {params.somvcf3} {params.somvcf4} {params.somvcf5} {params.somvcf6} {params.somvcf7}
+            

@@ -1,0 +1,38 @@
+Building DAG of jobs...
+Retrieving input from storage.
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+sv_germ_gasoline        1
+total                   1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Wed Feb 28 16:21:54 2024]
+localrule sv_germ_gasoline:
+    input: /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/uhy, /data2/utility/references/genomics/hs37d5.decoy.fa
+    output: /data2/mbaragli/python_app/app_python/work_dir/uhy/sv/uhy_gasoline/gasoline_final.vcf
+    jobid: 0
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/uhy/sv/uhy_gasoline/gasoline_final.vcf
+    wildcards: sample=uhy
+    resources: tmpdir=/tmp
+
+
+            cd /data2/mbaragli/tools/GASOLINE_1.1/
+            perl GASOLINEParse.pl -B /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam -L Germ -O /data2/mbaragli/python_app/app_python/work_dir/uhy/sv/uhy_gasoline/germ -R hg19 -Q 20 
+            perl GASOLINEGermlineDetector.pl -B /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam -L Germ -O /data2/mbaragli/python_app/app_python/work_dir/uhy/sv/uhy_gasoline/germ -NT 1 -NS 5000 -Q 20 -MS 2 -OT 0.8
+            perl GASOLINEGermlineVCFCreate.pl -L Germ -I /data2/mbaragli/python_app/app_python/work_dir/uhy/sv/uhy_gasoline/germ -O /data2/mbaragli/python_app/app_python/work_dir/uhy/sv/uhy_gasoline/gasoline_final.vcf -RA hg19 -FR /data2/utility/references/genomics/hs37d5.decoy.fa -TS 40 -TC 10 -TI 0.8 -TO 0.9
+            
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule sv_germ_gasoline in file /data2/mbaragli/python_app/app_python/Snakefile, line 334:
+Job 0 completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+/data2/mbaragli/python_app/app_python/work_dir/uhy/sv/uhy_gasoline/gasoline_final.vcf
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-02-28T162154.313911.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

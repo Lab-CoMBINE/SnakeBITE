@@ -1,0 +1,33 @@
+Building DAG of jobs...
+Retrieving input from storage.
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+sv_germ_gasoline        1
+total                   1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Wed Feb 28 16:22:24 2024]
+localrule sv_germ_gasoline:
+    input: /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/uhy, /data2/utility/references/genomics/hs37d5.decoy.fa
+    output: /data2/mbaragli/python_app/app_python/work_dir/uhy/sv/uhy_gasoline/gasoline_final.vcf
+    jobid: 0
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/uhy/sv/uhy_gasoline/gasoline_final.vcf
+    wildcards: sample=uhy
+    resources: tmpdir=/tmp
+
+
+            cd /data2/mbaragli/tools/GASOLINE_1.1/
+            perl GASOLINEParse.pl -B /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam -L Germ -O /data2/mbaragli/python_app/app_python/work_dir/uhy/sv/uhy_gasoline/germ -R hg19 -Q 20 
+            perl GASOLINEGermlineDetector.pl -B /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam -L Germ -O /data2/mbaragli/python_app/app_python/work_dir/uhy/sv/uhy_gasoline/germ
+            perl GASOLINEGermlineVCFCreate.pl -L Germ -I /data2/mbaragli/python_app/app_python/work_dir/uhy/sv/uhy_gasoline/germ -O /data2/mbaragli/python_app/app_python/work_dir/uhy/sv/uhy_gasoline/gasoline_final.vcf -RA hg19 -FR /data2/utility/references/genomics/hs37d5.decoy.fa -TS 40 -TC 10 -TI 0.8 -TO 0.9
+            
+[Wed Feb 28 16:22:27 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-02-28T162224.088921.snakemake.log

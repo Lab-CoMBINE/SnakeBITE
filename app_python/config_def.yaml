@@ -1,0 +1,169 @@
+in_file: ''
+
+cstm_name: ''
+
+work_folder: ''
+
+threads: ''
+
+paral_threads: ''
+
+paral_ops: ''
+
+paral_exc: ''
+
+dorado_minimap2: 'False'
+
+samtools_selection: ''
+
+annotation_selection: ''
+
+gas_som_selection: ''
+
+conda_envs:
+  longshot: longshot2
+  sniffles: sniffles2
+  svim: svim_cutesv
+  cutesv: svim_cutesv
+  vep: vep
+  nanocaller: nano_clair3
+  clair3: nano_clair3
+
+singularity_envs:
+  deepvariant: deepvariant
+
+ref_version: ''
+
+ref_genome: ''
+
+ref_hg19_path: /data2/utility/references/genomics/hs37d5.decoy.fa
+
+ref_hg38_path: /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta
+
+par_dorado:
+  model: ''
+  --device: ''
+  --modified-bases: ''
+  adv: ''
+
+par_alnano:
+  adv: ''
+
+par_sambam:
+  adv: ''
+
+#par_mulinp:
+#  adv: ''
+
+par_srtbam:
+  adv: ''
+
+par_idxbam:
+  adv: ''
+
+par_svim:
+  --min_mapq: ''
+  --min_sv_size: ''
+  --max_sv_size: ''
+  --skip_genotyping: ''
+  --minimum_score: ''
+  --minimum_depth: ''
+  adv: ''
+
+par_snif:
+  --phase: ''
+  --minsupport: ''
+  --minsvlen: ''
+  --mapq: ''
+  --no-qc: ''
+  adv: ''
+
+par_cut:
+  --min_mapq: ''
+  --min_read_len: ''
+  --min_support: ''
+  --min_size: ''
+  --max_size: ''
+  --genotype: ''
+  adv: ''
+
+par_gas:
+  som_ref: ''
+  pars_Q: ''
+  pars_T: ''
+  germ_NS: ''
+  germ_Q: ''
+  germ_MS: ''
+  germ_OT: ''
+  germ_vcf_TS: ''
+  germ_vcf_TC: ''
+  germ_vcf_TI: ''
+  germ_vcf_TO: ''
+  som_NS: ''
+  som_Q: ''
+  som_MS: ''
+  som_OV: ''
+  som_vcf_TS: ''
+  som_vcf_TC: ''
+  som_vcf_TI: ''
+  som_vcf_TO: ''
+  som_vcf_TR: ''
+  som_vcf_TP: ''
+  som_vcf_TH: ''
+
+par_long:
+  --region: ''
+  --min_cov: ''
+  --max_cov: ''
+  --min_mapq: ''
+  --min_alt_count: ''
+  --min_alt_frac: ''
+  adv: ''
+
+par_nanoc:
+  --mode: ''
+  --mincov: ''
+  --maxcov: ''
+  --bed: ''
+  --phase: ''
+  adv: ''
+
+par_cla3:
+  --model_path: ''
+  --bed_fn: ''
+  --qual: ''
+  --snp_min_af: ''
+  --indel_min_af: ''
+  --min_mq: ''
+  --call_snp_only: '' #condition will not be TRUE/FALSE, but ENABLE/DISABLE
+  adv: ''
+
+par_deep:
+  --region: ''
+  --pepper_min_mapq: ''
+  --pepper_min_snp_baseq: ''
+  --pepper_min_indel_baseq: ''
+  --pepper_snp_frequency: ''
+  --pepper_insert_frequency: ''
+  --pepper_delete_frequency: ''
+  --pepper_skip_indels: ''
+  --dv_min_mapping_quality: ''
+  --dv_min_base_quality: ''
+  adv: ''
+
+par_ann:
+  -SVinputInfo: ''
+  -annotationMode: ''
+  -tx: ''
+  -SVminSize: ''
+  adv: ''
+
+par_vep:
+  --everything: ''
+  --cache: '--database'
+  --dir_cache: ''
+  --coding_only: ''
+  --no_intergenic: ''
+  --offline: ''
+  --fasta: ''
+  adv: ''

@@ -1,0 +1,28 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job            count
+-----------  -------
+annotsv_vcf        1
+total              1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 20 15:31:47 2024]
+localrule annotsv_vcf:
+    input: /data2/mbaragli/python_app/app_python/work_dir/testrun_4_HG002/sv/testrun_4_HG002_sniffles.vcf
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_annotsv_sniffles/sv/testrun_annotsv_sniffles_annotsv.tsv
+    log: /data2/mbaragli/python_app/app_python/work_dir/testrun_annotsv_sniffles/logs/annotsv.log
+    jobid: 0
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/testrun_annotsv_sniffles/sv/testrun_annotsv_sniffles_annotsv.tsv
+    wildcards: sample=testrun_annotsv_sniffles
+    resources: tmpdir=/tmp
+
+/data2/mbaragli/tools/annotSV/AnnotSV/bin/AnnotSV -genomebuild GRCh38 -SVinputFile /data2/mbaragli/python_app/app_python/work_dir/testrun_4_HG002/sv/testrun_4_HG002_sniffles.vcf -outputFile /data2/mbaragli/python_app/app_python/work_dir/testrun_annotsv_sniffles/sv/testrun_annotsv_sniffles_annotsv.tsv      -vcf 1 -svtBEDcol 1
+[Mon May 20 15:33:49 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-05-20T153146.995082.snakemake.log

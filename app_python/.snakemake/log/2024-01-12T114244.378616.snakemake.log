@@ -1,0 +1,78 @@
+Building DAG of jobs...
+Retrieving input from storage.
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job               count
+--------------  -------
+samtools_index        1
+snv_longshot          1
+sv_sniffles           1
+sv_svim               1
+total                 4
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jan 12 11:42:44 2024]
+localrule samtools_index:
+    input: /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam
+    output: /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam.bai
+    jobid: 1
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam.bai; Set of input files has changed since last execution; Code has changed since last execution
+    wildcards: sample=A
+    resources: tmpdir=/tmp
+
+[Fri Jan 12 11:42:44 2024]
+Finished job 1.
+1 of 4 steps (25%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jan 12 11:42:44 2024]
+localrule sv_svim:
+    input: /data2/mbaragli/python_app/pipeline_snakemake/data/genome.fa, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/sv/A_svim
+    jobid: 3
+    reason: Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam.bai
+    wildcards: sample=A
+    resources: tmpdir=/tmp
+
+Activating conda environment: svim_cutesv
+[Fri Jan 12 11:42:52 2024]
+Finished job 3.
+2 of 4 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jan 12 11:42:52 2024]
+localrule snv_longshot:
+    input: /data2/mbaragli/python_app/pipeline_snakemake/data/genome.fa, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/snv/A_longshot.vcf
+    jobid: 0
+    reason: Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam.bai
+    wildcards: sample=A
+    resources: tmpdir=/tmp
+
+Activating conda environment: longshot2
+[Fri Jan 12 11:42:53 2024]
+Finished job 0.
+3 of 4 steps (75%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jan 12 11:42:53 2024]
+localrule sv_sniffles:
+    input: /data2/mbaragli/python_app/pipeline_snakemake/data/genome.fa, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/sv/A_sniffles.vcf
+    jobid: 2
+    reason: Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam.bai
+    wildcards: sample=A
+    resources: tmpdir=/tmp
+
+Activating conda environment: sniffles2
+[Fri Jan 12 11:42:54 2024]
+Finished job 2.
+4 of 4 steps (100%) done
+Complete log: .snakemake/log/2024-01-12T114244.378616.snakemake.log

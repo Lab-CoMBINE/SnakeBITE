@@ -1,0 +1,24 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job       count
+------  -------
+dorado        1
+total         1
+
+Select jobs to execute...
+
+[Fri Mar 22 10:33:24 2024]
+rule dorado:
+    input: /data2/gmattei/Banella/NanoporeFLT3/Runs/Dimeo_FLT3pos_11032024/20240311_1524_P2S-00775-B_PAU82037_9e2943bd/pod5
+    output: /data2/mbaragli/NanoporeFLT3/Dimeo_FLT3/mapped_reads/Dimeo_FLT3.bam
+    jobid: 0
+    reason: Missing output files: /data2/mbaragli/NanoporeFLT3/Dimeo_FLT3/mapped_reads/Dimeo_FLT3.bam
+    wildcards: sample=Dimeo_FLT3
+    resources: tmpdir=/data2/mbaragli/.RTmpDir
+
+RuleException in rule dorado in file /data2/mbaragli/python_app/app_python/Snakefile, line 25:
+AttributeError: 'Params' object has no attribute 'par3', when formatting the following:
+/data1/Tools/lib/dorado-0.5.0-linux-x64/bin/dorado basecaller {params.mdl} {input} {params.par2} {params.par3} {params.adv} > {output}

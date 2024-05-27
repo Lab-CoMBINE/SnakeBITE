@@ -1,0 +1,87 @@
+Building DAG of jobs...
+Retrieving input from storage.
+Using shell: /usr/bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Job stats:
+job               count
+--------------  -------
+snv_clair3            1
+snv_longshot          1
+snv_nanocaller        1
+sv_cutesv             1
+sv_sniffles           1
+sv_svim               1
+total                 6
+
+Select jobs to execute...
+Execute 6 jobs...
+
+[Fri Feb 16 15:46:06 2024]
+localrule sv_sniffles:
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/rinco/sv/rinco_sniffles.vcf
+    jobid: 5
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/rinco/sv/rinco_sniffles.vcf
+    wildcards: sample=rinco
+    resources: tmpdir=/tmp
+
+Activating conda environment: sniffles2
+
+[Fri Feb 16 15:46:06 2024]
+localrule snv_nanocaller:
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/rinco/snv/rinco_nanocaller
+    jobid: 1
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/rinco/snv/rinco_nanocaller
+    wildcards: sample=rinco
+    resources: tmpdir=/tmp
+
+Activating conda environment: nano_clair3
+
+[Fri Feb 16 15:46:06 2024]
+localrule snv_longshot:
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/rinco/snv/rinco_longshot.vcf
+    jobid: 0
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/rinco/snv/rinco_longshot.vcf
+    wildcards: sample=rinco
+    resources: tmpdir=/tmp
+
+Activating conda environment: longshot2
+
+[Fri Feb 16 15:46:06 2024]
+localrule snv_clair3:
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/rinco/snv/rinco_clair3
+    jobid: 4
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/rinco/snv/rinco_clair3
+    wildcards: sample=rinco
+    resources: tmpdir=/tmp
+
+Activating conda environment: nano_clair3
+
+[Fri Feb 16 15:46:06 2024]
+localrule sv_svim:
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/rinco/sv/rinco_svim
+    jobid: 3
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/rinco/sv/rinco_svim
+    wildcards: sample=rinco
+    resources: tmpdir=/tmp
+
+Activating conda environment: svim_cutesv
+
+[Fri Feb 16 15:46:06 2024]
+localrule sv_cutesv:
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam, /data2/mbaragli/Meyer/alignment/Meyer_04072023_merged_sorted.bam.bai, /data2/mbaragli/python_app/app_python/work_dir/rinco
+    output: /data2/mbaragli/python_app/app_python/work_dir/rinco/sv/rinco_cutesv.vcf
+    jobid: 2
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/rinco/sv/rinco_cutesv.vcf
+    wildcards: sample=rinco
+    resources: tmpdir=/tmp
+
+Activating conda environment: svim_cutesv
+[Fri Feb 16 16:10:45 2024]
+Finished job 5.
+1 of 6 steps (17%) done

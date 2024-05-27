@@ -1,0 +1,67 @@
+Building DAG of jobs...
+Retrieving input from storage.
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                    count
+-------------------  -------
+snv_clair3                 1
+snv_clair3_vep             1
+snv_longshot               1
+snv_longshot_vep           1
+snv_nanocaller             1
+snv_nanocaller_vep         1
+sv_cutesv                  1
+sv_cutesv_annotsv          1
+sv_sniffles                1
+sv_sniffles_annotsv        1
+sv_svim                    1
+sv_svim_annotsv            1
+total                     12
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Feb 23 10:11:40 2024]
+localrule sv_svim:
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam, /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/no_del_23022024/sv/no_del_23022024_svim
+    jobid: 3
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/no_del_23022024/sv/no_del_23022024_svim
+    wildcards: sample=no_del_23022024
+    resources: tmpdir=/tmp
+
+Activating conda environment: svim_cutesv
+[Fri Feb 23 10:11:55 2024]
+Finished job 3.
+1 of 12 steps (8%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Feb 23 10:11:55 2024]
+localrule sv_svim_annotsv:
+    input: /data2/mbaragli/python_app/app_python/work_dir/no_del_23022024/sv/no_del_23022024_svim
+    output: /data2/mbaragli/python_app/app_python/work_dir/no_del_23022024/sv/no_del_23022024_svim_annotsv.tsv
+    jobid: 2
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/no_del_23022024/sv/no_del_23022024_svim_annotsv.tsv; Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/no_del_23022024/sv/no_del_23022024_svim
+    wildcards: sample=no_del_23022024
+    resources: tmpdir=/tmp
+
+[Fri Feb 23 10:12:01 2024]
+Finished job 2.
+2 of 12 steps (17%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Feb 23 10:12:01 2024]
+localrule snv_nanocaller:
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam, /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/no_del_23022024/snv/no_del_23022024_nanocaller
+    jobid: 9
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/no_del_23022024/snv/no_del_23022024_nanocaller
+    wildcards: sample=no_del_23022024
+    resources: tmpdir=/tmp
+
+Activating conda environment: nano_clair3
+Terminating processes on user request, this might take some time.

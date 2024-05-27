@@ -1,0 +1,96 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job               count
+--------------  -------
+minimap2              1
+samtools_index        1
+samtools_sort         1
+snv_longshot          1
+sv_svim               1
+total                 5
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr 23 15:05:17 2024]
+localrule minimap2:
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/abimbocci/snakemake_tutorial/data/samples/A.fastq
+    output: /data2/mbaragli/python_app/app_python/work_dir/cores1/mapped_reads/cores1.bam
+    jobid: 2
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/cores1/mapped_reads/cores1.bam
+    wildcards: sample=cores1
+    resources: tmpdir=/tmp
+
+[Tue Apr 23 15:07:48 2024]
+Finished job 2.
+1 of 5 steps (20%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr 23 15:07:48 2024]
+localrule samtools_sort:
+    input: /data2/mbaragli/python_app/app_python/work_dir/cores1/mapped_reads/cores1.bam
+    output: /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam
+    jobid: 1
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam; Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/cores1/mapped_reads/cores1.bam
+    wildcards: sample=cores1
+    resources: tmpdir=/tmp
+
+samtools sort -@ 1  -O bam /data2/mbaragli/python_app/app_python/work_dir/cores1/mapped_reads/cores1.bam > /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam
+[Tue Apr 23 15:07:48 2024]
+Finished job 1.
+2 of 5 steps (40%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr 23 15:07:48 2024]
+localrule samtools_index:
+    input: /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam
+    output: /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam.bai
+    jobid: 3
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam.bai; Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam
+    wildcards: sample=cores1
+    resources: tmpdir=/tmp
+
+samtools index -@ 1  /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam
+[Tue Apr 23 15:07:49 2024]
+Finished job 3.
+3 of 5 steps (60%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr 23 15:07:49 2024]
+localrule sv_svim:
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/cores1/sv/cores1_svim
+    jobid: 0
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/cores1/sv/cores1_svim; Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam.bai, /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam
+    wildcards: sample=cores1
+    resources: tmpdir=/tmp
+
+svim alignment /data2/mbaragli/python_app/app_python/work_dir/cores1/sv/cores1_svim /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam /data2/utility/references/genomics/hs37d5.decoy.fa        
+Activating conda environment: svim_cutesv
+[Tue Apr 23 15:07:58 2024]
+Finished job 0.
+4 of 5 steps (80%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr 23 15:07:58 2024]
+localrule snv_longshot:
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/cores1/snv/cores1_longshot.vcf
+    jobid: 4
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/cores1/snv/cores1_longshot.vcf; Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam.bai, /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam
+    wildcards: sample=cores1
+    resources: tmpdir=/tmp
+
+longshot        --bam /data2/mbaragli/python_app/app_python/work_dir/cores1/sorted_reads/cores1_sorted.bam --ref /data2/utility/references/genomics/hs37d5.decoy.fa --out /data2/mbaragli/python_app/app_python/work_dir/cores1/snv/cores1_longshot.vcf
+Activating conda environment: longshot2
+[Tue Apr 23 15:08:15 2024]
+Finished job 4.
+5 of 5 steps (100%) done
+Complete log: .snakemake/log/2024-04-23T150517.263344.snakemake.log

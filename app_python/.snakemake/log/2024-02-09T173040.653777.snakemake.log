@@ -1,0 +1,49 @@
+Building DAG of jobs...
+Retrieving input from storage.
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+sv_cutesv                1
+sv_cutesv_annotsv        1
+total                    2
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Feb  9 17:30:40 2024]
+localrule sv_cutesv:
+    input: /data2/utility/references/genomics/hs37d5.decoy.fa, /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam, /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam.bai, /data2/mbaragli/python_app/app_python/work_dir/PROVA
+    output: /data2/mbaragli/python_app/app_python/work_dir/PROVA/sv/PROVA_cutesv.vcf
+    jobid: 1
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/PROVA/sv/PROVA_cutesv.vcf
+    wildcards: sample=PROVA
+    resources: tmpdir=/tmp
+
+Activating conda environment: svim_cutesv
+[Fri Feb  9 17:45:44 2024]
+Finished job 1.
+1 of 2 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Feb  9 17:45:44 2024]
+localrule sv_cutesv_annotsv:
+    input: /data2/mbaragli/python_app/app_python/work_dir/PROVA/sv/PROVA_cutesv.vcf
+    output: /data2/mbaragli/python_app/app_python/work_dir/PROVA/sv/PROVA_cutesv_annotsv.tsv
+    jobid: 0
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/PROVA/sv/PROVA_cutesv_annotsv.tsv; Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/PROVA/sv/PROVA_cutesv.vcf
+    wildcards: sample=PROVA
+    resources: tmpdir=/tmp
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule sv_cutesv_annotsv in file /data2/mbaragli/python_app/app_python/Snakefile, line 207:
+Job 0 completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+/data2/mbaragli/python_app/app_python/work_dir/PROVA/sv/PROVA_cutesv_annotsv.tsv
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-02-09T173040.653777.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

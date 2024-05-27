@@ -1,0 +1,3 @@
+KeyError in file /data2/mbaragli/python_app/app_python/Snakefile, line 17:
+'work_folder'
+  File "/data2/mbaragli/python_app/app_python/Snakefile", line 17, in <module>

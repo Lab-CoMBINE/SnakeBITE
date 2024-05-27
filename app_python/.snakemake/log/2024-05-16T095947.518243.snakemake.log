@@ -1,0 +1,188 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 50
+Rules claiming more threads will be scaled down.
+Job stats:
+job                    count
+-------------------  -------
+snv_clair3                 1
+snv_clair3_vep             1
+snv_deepvariant            1
+snv_deepvariant_vep        1
+snv_longshot               1
+snv_longshot_vep           1
+snv_nanocaller             1
+snv_nanocaller_vep         1
+sv_cutesv                  1
+sv_cutesv_annotsv          1
+sv_gasoline_annotsv        1
+sv_germ_gasoline           1
+sv_sniffles                1
+sv_sniffles_annotsv        1
+sv_svim                    1
+sv_svim_annotsv            1
+total                     16
+
+Select jobs to execute...
+Execute 8 jobs...
+
+[Thu May 16 09:59:50 2024]
+localrule snv_longshot:
+    input: /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_longshot.vcf
+    jobid: 3
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_longshot.vcf
+    wildcards: sample=testrun_2_HG002
+    resources: tmpdir=/tmp
+
+longshot        --bam /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam --ref /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta --out /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_longshot.vcf
+Activating conda environment: longshot2
+
+[Thu May 16 09:59:55 2024]
+localrule sv_cutesv:
+    input: /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam.bai, /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_cutesv.vcf
+    jobid: 11
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_cutesv.vcf
+    wildcards: sample=testrun_2_HG002
+    threads: 8
+    resources: tmpdir=/tmp
+
+cuteSV -t 8        /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_cutesv.vcf /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002
+Activating conda environment: svim_cutesv
+
+[Thu May 16 09:59:55 2024]
+localrule snv_nanocaller:
+    input: /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_nanocaller
+    jobid: 13
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_nanocaller
+    wildcards: sample=testrun_2_HG002
+    threads: 8
+    resources: tmpdir=/tmp
+
+NanoCaller      --cpu 8  --bam /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam --ref /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta --output /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_nanocaller
+Activating conda environment: nano_clair3
+
+[Thu May 16 09:59:55 2024]
+localrule sv_sniffles:
+    input: /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_sniffles.vcf
+    jobid: 7
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_sniffles.vcf
+    wildcards: sample=testrun_2_HG002
+    threads: 8
+    resources: tmpdir=/tmp
+
+sniffles       --input /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam --reference /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta --vcf /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_sniffles.vcf --threads 8
+Activating conda environment: sniffles2
+
+[Thu May 16 09:59:55 2024]
+localrule snv_deepvariant:
+    input: /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam, /data2/utility/references/genomics
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_deepvariant
+    jobid: 1
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_deepvariant
+    wildcards: sample=testrun_2_HG002
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        docker run         -v "/data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads":"/data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads"         -v "/data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_deepvariant":"/data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_deepvariant"         -v "/data2/utility/references/genomics":"/data2/utility/references/genomics"         kishwars/pepper_deepvariant:r0.8         run_pepper_margin_deepvariant call_variant         -b "/data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam"         -f "/data2/utility/references/genomics/Homo_sapiens_assembly38.fasta"         -o "/data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_deepvariant"         -t "8"                            --ont_r10_q20
+        
+
+[Thu May 16 09:59:55 2024]
+localrule sv_svim:
+    input: /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_svim
+    jobid: 5
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_svim
+    wildcards: sample=testrun_2_HG002
+    resources: tmpdir=/tmp
+
+svim alignment /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_svim /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta        
+Activating conda environment: svim_cutesv
+
+[Thu May 16 09:59:55 2024]
+localrule sv_germ_gasoline:
+    input: /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002, /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_gasoline/gasoline_final.vcf
+    jobid: 9
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_gasoline/gasoline_final.vcf
+    wildcards: sample=testrun_2_HG002
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+            cd /data2/abimbocci/GASOLINE_1.1/
+            perl GASOLINEParse.pl -B /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam -L Germ -O /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_gasoline/germ -R hg38  
+            perl GASOLINEGermlineDetector.pl -B /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam -L Germ -O /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_gasoline/germ  -NT 8    
+            perl GASOLINEGermlineVCFCreate.pl -L Germ -I /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_gasoline/germ -O /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_gasoline/gasoline_final.vcf -RA hg38 -FR /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta    
+            
+
+[Thu May 16 09:59:55 2024]
+localrule snv_clair3:
+    input: /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_clair3
+    jobid: 15
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_clair3
+    wildcards: sample=testrun_2_HG002
+    threads: 8
+    resources: tmpdir=/tmp
+
+/data2/mbaragli/tools/Clair3/run_clair3.sh --bam_fn=/data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam --ref_fn=/data2/utility/references/genomics/Homo_sapiens_assembly38.fasta --output=/data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_clair3 --threads=8 --platform=ont --model_path /data2/mbaragli/tools/rerio/clair3_models/r1041_e82_400bps_sup_v430      
+Activating conda environment: nano_clair3
+[Thu May 16 09:59:56 2024]
+Error in rule snv_longshot:
+    jobid: 3
+    input: /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_longshot.vcf
+    conda-env: longshot2
+    shell:
+        longshot        --bam /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/sorted_reads/testrun_HG002_sorted.bam --ref /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta --out /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_longshot.vcf
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Thu May 16 10:00:05 2024]
+Finished job 15.
+1 of 16 steps (6%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu May 16 10:00:05 2024]
+localrule snv_clair3_vep:
+    input: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_clair3
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_clair3_vep.vcf
+    jobid: 14
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_clair3_vep.vcf; Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_clair3
+    wildcards: sample=testrun_2_HG002
+    threads: 8
+    resources: tmpdir=/tmp
+
+vep -format vcf -i /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_clair3/merge_output.vcf.gz -o /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_clair3_vep.vcf --vcf --fork 8 --assembly GRCh37       --database --fork 30
+Activating conda environment: vep
+[Thu May 16 10:01:12 2024]
+Error in rule snv_clair3_vep:
+    jobid: 14
+    input: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_clair3
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_clair3_vep.vcf
+    conda-env: vep
+    shell:
+        vep -format vcf -i /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_clair3/merge_output.vcf.gz -o /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/snv/testrun_2_HG002_clair3_vep.vcf --vcf --fork 8 --assembly GRCh37       --database --fork 30
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Thu May 16 10:04:27 2024]
+Finished job 7.
+2 of 16 steps (12%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu May 16 10:04:27 2024]
+localrule sv_sniffles_annotsv:
+    input: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_sniffles.vcf
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_sniffles_annotsv.tsv
+    jobid: 6
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_sniffles_annotsv.tsv; Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_sniffles.vcf
+    wildcards: sample=testrun_2_HG002
+    resources: tmpdir=/tmp
+
+/data2/mbaragli/tools/annotSV/AnnotSV/bin/AnnotSV -genomeBuild GRCh37 -SVinputFile /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_sniffles.vcf -outputFile /data2/mbaragli/python_app/app_python/work_dir/testrun_2_HG002/sv/testrun_2_HG002_sniffles_annotsv.tsv      -vcf 1 -svtBEDcol 1

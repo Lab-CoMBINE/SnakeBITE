@@ -1,0 +1,3 @@
+Building DAG of jobs...
+CyclicGraphException in rule samtools_copy in file /data2/mbaragli/python_app/app_python/Snakefile, line 40:
+Cyclic dependency on rule samtools_copy.

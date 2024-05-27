@@ -1,0 +1,76 @@
+Building DAG of jobs...
+Retrieving input from storage.
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job               count
+--------------  -------
+minimap2              1
+samtools_index        1
+samtools_sort         1
+snv_longshot          1
+total                 4
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Feb  5 17:01:32 2024]
+localrule minimap2:
+    input: /data2/mbaragli/python_app/pipeline_snakemake/data/genome.fa, /data2/mbaragli/python_app/app_python/work_dir/data/samples/A.fastq
+    output: /data2/mbaragli/python_app/app_python/work_dir/CUBONE/mapped_reads/CUBONE.bam
+    jobid: 2
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/CUBONE/mapped_reads/CUBONE.bam
+    wildcards: sample=CUBONE
+    resources: tmpdir=/tmp
+
+[Mon Feb  5 17:01:34 2024]
+Finished job 2.
+1 of 4 steps (25%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Feb  5 17:01:34 2024]
+localrule samtools_sort:
+    input: /data2/mbaragli/python_app/app_python/work_dir/CUBONE/mapped_reads/CUBONE.bam
+    output: /data2/mbaragli/python_app/app_python/work_dir/CUBONE/sorted_reads/CUBONE_sorted.bam
+    jobid: 1
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/CUBONE/sorted_reads/CUBONE_sorted.bam; Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/CUBONE/mapped_reads/CUBONE.bam
+    wildcards: sample=CUBONE
+    resources: tmpdir=/tmp
+
+[Mon Feb  5 17:01:34 2024]
+Finished job 1.
+2 of 4 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Feb  5 17:01:34 2024]
+localrule samtools_index:
+    input: /data2/mbaragli/python_app/app_python/work_dir/CUBONE/sorted_reads/CUBONE_sorted.bam
+    output: /data2/mbaragli/python_app/app_python/work_dir/CUBONE/sorted_reads/CUBONE_sorted.bam.bai
+    jobid: 3
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/CUBONE/sorted_reads/CUBONE_sorted.bam.bai; Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/CUBONE/sorted_reads/CUBONE_sorted.bam
+    wildcards: sample=CUBONE
+    resources: tmpdir=/tmp
+
+[Mon Feb  5 17:01:34 2024]
+Finished job 3.
+3 of 4 steps (75%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Feb  5 17:01:34 2024]
+localrule snv_longshot:
+    input: /data2/mbaragli/python_app/pipeline_snakemake/data/genome.fa, /data2/mbaragli/python_app/app_python/work_dir/CUBONE/sorted_reads/CUBONE_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/CUBONE/sorted_reads/CUBONE_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/CUBONE/snv/CUBONE_longshot.vcf
+    jobid: 0
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/CUBONE/snv/CUBONE_longshot.vcf; Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/CUBONE/sorted_reads/CUBONE_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/CUBONE/sorted_reads/CUBONE_sorted.bam.bai
+    wildcards: sample=CUBONE
+    resources: tmpdir=/tmp
+
+Activating conda environment: longshot2
+[Mon Feb  5 17:01:35 2024]
+Finished job 0.
+4 of 4 steps (100%) done
+Complete log: .snakemake/log/2024-02-05T170132.722323.snakemake.log

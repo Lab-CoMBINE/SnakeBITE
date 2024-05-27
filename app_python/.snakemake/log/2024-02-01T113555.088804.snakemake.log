@@ -1,0 +1,7 @@
+Building DAG of jobs...
+MissingInputException in rule sv_sniffles in file /data2/mbaragli/python_app/app_python/Snakefile, line 107:
+Missing input files for rule sv_sniffles:
+    output: /data2/mbaragli/python_app/app_python/work_dir/TRUZZO/sv/TRUZZO_sniffles.vcf
+    wildcards: sample=TRUZZO
+    affected files:
+        /data2/mbaragli/python_app/app_python/work_dir/TRUZZO/sorted_reads/TRUZZO_sorted.bam.bai

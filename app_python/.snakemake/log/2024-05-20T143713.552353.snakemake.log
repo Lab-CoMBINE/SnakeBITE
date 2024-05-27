@@ -1,0 +1,38 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job            count
+-----------  -------
+annotsv_vcf        1
+total              1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 20 14:37:13 2024]
+localrule annotsv_vcf:
+    input: /data2/mbaragli/python_app/app_python/work_dir/testrun_4_HG002/sv/testrun_4_HG002_svim/variants.vcf
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_annotsv_svim/sv/testrun_annotsv_svim_annotsv.tsv
+    log: /data2/mbaragli/python_app/app_python/work_dir/testrun_annotsv_svim/logs/annotsv.log
+    jobid: 0
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/testrun_annotsv_svim/sv/testrun_annotsv_svim_annotsv.tsv
+    wildcards: sample=testrun_annotsv_svim
+    resources: tmpdir=/tmp
+
+/data2/mbaragli/tools/annotSV/AnnotSV/bin/AnnotSV -genomebuild GRCh38 -SVinputFile /data2/mbaragli/python_app/app_python/work_dir/testrun_4_HG002/sv/testrun_4_HG002_svim/variants.vcf -outputFile /data2/mbaragli/python_app/app_python/work_dir/testrun_annotsv_svim/sv/testrun_annotsv_svim_annotsv.tsv      -vcf 1 -svtBEDcol 1
+Terminating processes on user request, this might take some time.
+[Mon May 20 14:51:05 2024]
+Error in rule annotsv_vcf:
+    jobid: 0
+    input: /data2/mbaragli/python_app/app_python/work_dir/testrun_4_HG002/sv/testrun_4_HG002_svim/variants.vcf
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_annotsv_svim/sv/testrun_annotsv_svim_annotsv.tsv
+    log: /data2/mbaragli/python_app/app_python/work_dir/testrun_annotsv_svim/logs/annotsv.log (check log file(s) for error details)
+    shell:
+        /data2/mbaragli/tools/annotSV/AnnotSV/bin/AnnotSV -genomebuild GRCh38 -SVinputFile /data2/mbaragli/python_app/app_python/work_dir/testrun_4_HG002/sv/testrun_4_HG002_svim/variants.vcf -outputFile /data2/mbaragli/python_app/app_python/work_dir/testrun_annotsv_svim/sv/testrun_annotsv_svim_annotsv.tsv      -vcf 1 -svtBEDcol 1
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Complete log: .snakemake/log/2024-05-20T143713.552353.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

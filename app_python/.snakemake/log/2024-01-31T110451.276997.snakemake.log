@@ -1,0 +1,8 @@
+Building DAG of jobs...
+MissingInputException in rule snv_longshot in file /data2/mbaragli/python_app/app_python/Snakefile, line 70:
+Missing input files for rule snv_longshot:
+    output: /data2/mbaragli/python_app/app_python/work_dir/snv/USER_longshot.vcf
+    wildcards: sample=USER
+    affected files:
+        /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/USER_sorted.bam
+        /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/USER_sorted.bam.bai

@@ -1,0 +1,89 @@
+Building DAG of jobs...
+Retrieving input from storage.
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job              count
+-------------  -------
+bwa_map              1
+samtools_sort        1
+snv_longshot         1
+sv_sniffles          1
+sv_svim              1
+total                5
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jan 12 11:17:23 2024]
+localrule bwa_map:
+    input: /data2/mbaragli/python_app/pipeline_snakemake/data/genome.fa, /data2/mbaragli/python_app/pipeline_snakemake/data/samples/A.fastq
+    output: /data2/mbaragli/python_app/app_python/work_dir/mapped_reads/A.bam
+    jobid: 2
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/mapped_reads/A.bam; Set of input files has changed since last execution
+    wildcards: sample=A
+    resources: tmpdir=/tmp
+
+[Fri Jan 12 11:17:24 2024]
+Finished job 2.
+1 of 5 steps (20%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jan 12 11:17:24 2024]
+localrule samtools_sort:
+    input: /data2/mbaragli/python_app/app_python/work_dir/mapped_reads/A.bam
+    output: /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam.bai
+    jobid: 1
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam.bai, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam; Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/mapped_reads/A.bam
+    wildcards: sample=A
+    resources: tmpdir=/tmp
+
+[Fri Jan 12 11:17:25 2024]
+Finished job 1.
+2 of 5 steps (40%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jan 12 11:17:25 2024]
+localrule snv_longshot:
+    input: /data2/mbaragli/python_app/pipeline_snakemake/data/genome.fa, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/snv/A_longshot.vcf
+    jobid: 0
+    reason: Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam.bai, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam
+    wildcards: sample=A
+    resources: tmpdir=/tmp
+
+Activating conda environment: longshot2
+[Fri Jan 12 11:17:26 2024]
+Finished job 0.
+3 of 5 steps (60%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jan 12 11:17:26 2024]
+localrule sv_sniffles:
+    input: /data2/mbaragli/python_app/pipeline_snakemake/data/genome.fa, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/sv/A_sniffles.vcf
+    jobid: 4
+    reason: Input files updated by another job: /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam.bai, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam
+    wildcards: sample=A
+    resources: tmpdir=/tmp
+
+Activating conda environment: sniffles2
+[Fri Jan 12 11:17:26 2024]
+Error in rule sv_sniffles:
+    jobid: 4
+    input: /data2/mbaragli/python_app/pipeline_snakemake/data/genome.fa, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam.bai
+    output: /data2/mbaragli/python_app/app_python/work_dir/sv/A_sniffles.vcf
+    conda-env: sniffles2
+    shell:
+        sniffles --input /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/A_sorted.bam --reference /data2/mbaragli/python_app/pipeline_snakemake/data/genome.fa --vcf /data2/mbaragli/python_app/app_python/work_dir/sv/A_sniffles.vcf
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-01-12T111723.077490.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

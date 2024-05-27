@@ -1,0 +1,56 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 50
+Rules claiming more threads will be scaled down.
+Job stats:
+job                    count
+-------------------  -------
+dorado_alig                1
+samtools_index             1
+samtools_sort              1
+snv_clair3                 1
+snv_clair3_vep             1
+snv_deepvariant            1
+snv_deepvariant_vep        1
+snv_longshot               1
+snv_longshot_vep           1
+snv_nanocaller             1
+snv_nanocaller_vep         1
+sv_cutesv                  1
+sv_cutesv_annotsv          1
+sv_gasoline_annotsv        1
+sv_germ_gasoline           1
+sv_sniffles                1
+sv_sniffles_annotsv        1
+sv_svim                    1
+sv_svim_annotsv            1
+total                     19
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 09:56:02 2024]
+localrule dorado_alig:
+    input: /data2/mbaragli/HG002/nanopore_r10/20230424_1302_3H_PAO89685_2264ba8c/pod5_pass
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/mapped_reads/testrun_HG002.bam
+    jobid: 3
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/mapped_reads/testrun_HG002.bam
+    wildcards: sample=testrun_HG002
+    resources: tmpdir=/tmp
+
+/data1/Tools/lib/dorado-0.5.0-linux-x64/bin/dorado basecaller /data2/mbaragli/dorado_models/dna_r10.4.1_e8.2_400bps_sup@v4.3.0 /data2/mbaragli/HG002/nanopore_r10/20230424_1302_3H_PAO89685_2264ba8c/pod5_pass --device cuda:all   --reference /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta > /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/mapped_reads/testrun_HG002.bam
+[Mon May 13 09:56:03 2024]
+Error in rule dorado_alig:
+    jobid: 3
+    input: /data2/mbaragli/HG002/nanopore_r10/20230424_1302_3H_PAO89685_2264ba8c/pod5_pass
+    output: /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/mapped_reads/testrun_HG002.bam
+    shell:
+        /data1/Tools/lib/dorado-0.5.0-linux-x64/bin/dorado basecaller /data2/mbaragli/dorado_models/dna_r10.4.1_e8.2_400bps_sup@v4.3.0 /data2/mbaragli/HG002/nanopore_r10/20230424_1302_3H_PAO89685_2264ba8c/pod5_pass --device cuda:all   --reference /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta > /data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/mapped_reads/testrun_HG002.bam
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job dorado_alig since they might be corrupted:
+/data2/mbaragli/python_app/app_python/work_dir/testrun_HG002/mapped_reads/testrun_HG002.bam
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-05-13T095602.848810.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

@@ -1,0 +1,31 @@
+Building DAG of jobs...
+Retrieving input from storage.
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+sv_germ_gasoline        1
+total                   1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Feb 27 16:40:02 2024]
+localrule sv_germ_gasoline:
+    input: /data2/mbaragli/Meyer/alignment/Meyer_04072023_opnfast5_merged_sorted.bam, /data2/mbaragli/python_app/app_python/work_dir/mbara, /data2/utility/references/genomics/hs37d5.decoy.fa
+    output: /data2/mbaragli/python_app/app_python/work_dir/mbara/sv/mbara_gasoline
+    jobid: 0
+    reason: Missing output files: /data2/mbaragli/python_app/app_python/work_dir/mbara/sv/mbara_gasoline
+    wildcards: sample=mbara
+    resources: tmpdir=/tmp
+
+RuleException in rule sv_germ_gasoline in file /data2/mbaragli/python_app/app_python/Snakefile, line 334:
+NameError: The name 'param' is unknown in this context. Please make sure that you defined that variable. Also note that braces not used for variable access have to be escaped by repeating them, i.e. {{print $1}}, when formatting the following:
+
+            cd /data2/mbaragli/tools/GASOLINE_1.1/
+            perl GASOLINEParse.pl -B {input.bam} -L Test -O {input.wd}/sv/{params.sample}_gasoline/test -R hg19 {params.qual} {params.bed}
+            perl GASOLINEGermlineDetector.pl -B {input.bam} -L Test -O {input.wd}/sv/{params.sample}_gasoline/test -NT {param.cores} {params.germ1} {params.germ2} {params.germ3} {params.germ4}
+            perl GASOLINEGermlineDetector.pl -L Test -I {input.wd}/sv/{params.sample}_gasoline/test -O {output}/gasoline_final.vcf -RA hg19 -FR {input.fa} {params.germvcf1} {params.germvcf2} {params.germvcf3} {params.germvcf4}
+            
