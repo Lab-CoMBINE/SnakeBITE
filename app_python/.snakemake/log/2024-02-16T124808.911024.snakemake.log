@@ -1,8 +1,0 @@
-Building DAG of jobs...
-MissingInputException in rule snv_clair3 in file /data2/mbaragli/python_app/app_python/Snakefile, line 147:
-Missing input files for rule snv_clair3:
-    output: /data2/mbaragli/python_app/app_python/work_dir/prv_local/snv/prv_local_clair3
-    wildcards: sample=prv_local
-    affected files:
-        /data2/mbaragli/python_app/app_python/work_dir/prv_local/sorted_reads/prv_local_sorted.bam
-        /data2/mbaragli/python_app/app_python/work_dir/prv_local/sorted_reads/prv_local_sorted.bam.bai

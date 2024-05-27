@@ -1,7 +1,0 @@
-Building DAG of jobs...
-MissingInputException in rule sv_sniffles in file /data2/mbaragli/python_app/app_python/Snakefile, line 129:
-Missing input files for rule sv_sniffles:
-    output: /data2/mbaragli/python_app/app_python/work_dir/Meyer_04072023_opnfast5_merged_sorted/sv/Meyer_04072023_opnfast5_merged_sorted_sniffles.vcf
-    wildcards: sample=Meyer_04072023_opnfast5_merged_sorted
-    affected files:
-        /data2/utility/references/genomics/hs37d.decoy.fa

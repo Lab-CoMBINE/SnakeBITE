@@ -1,7 +1,0 @@
-Building DAG of jobs...
-MissingInputException in rule sv_svim_annotsv in file /data2/mbaragli/python_app/app_python/Snakefile, line 180:
-Missing input files for rule sv_svim_annotsv:
-    output: /data2/mbaragli/python_app/app_python/work_dir/cafone/sv/cafone_svim_annotsv.tsv
-    wildcards: sample=cafone
-    affected files:
-        /data2/mbaragli/python_app/app_python/work_dir/cafone/sv/cafone_svim/variants.vcf

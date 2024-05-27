@@ -1,8 +1,0 @@
-Building DAG of jobs...
-MissingInputException in rule sv_svim in file /data2/mbaragli/python_app/app_python/Snakefile, line 92:
-Missing input files for rule sv_svim:
-    output: /data2/mbaragli/python_app/app_python/work_dir/sv/PIPPO_svim
-    wildcards: sample=PIPPO
-    affected files:
-        /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/PIPPO_sorted.bam
-        /data2/mbaragli/python_app/app_python/work_dir/sorted_reads/PIPPO_sorted.bam.bai

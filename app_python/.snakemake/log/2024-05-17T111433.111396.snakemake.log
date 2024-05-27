@@ -1,3 +1,0 @@
-Building DAG of jobs...
-MissingRuleException:
-No rule to produce /data2/abimbocci/work_dir/testrun_4_HG002/snv/testrun_4_HG002_clair3 (if you use input functions make sure that they don't raise unexpected exceptions).
