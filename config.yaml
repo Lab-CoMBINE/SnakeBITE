@@ -21,43 +21,43 @@ annotation_selection: ''
 gas_som_selection: ''
 
 tool_usage:
-  dorado: /data1/Tools/lib/dorado-0.6.2-linux-x64/bin/dorado
-  dorado_mdl: /data2/mbaragli/dorado_models
+  dorado:
+  dorado_mdl:
   minimap:
   samtools:
   svim:
   sniffles:
   cutesv:
-  gasoline: /data2/abimbocci/GASOLINE_1.1
+  gasoline:
   longshot:
   nanocaller:
-  clair3: /data2/mbaragli/tools/Clair3/run_clair3.sh
+  clair3:
   deepvariant:
   vep:
-  annotsv: /data2/mbaragli/tools/annotSV/AnnotSV/bin/AnnotSV
+  annotsv:
 
 conda_envs:
   dorado:
   minimap:
   samtools:
-  svim: svim_cutesv
-  sniffles: sniffles2
-  cutesv: svim_cutesv
+  svim:
+  sniffles:
+  cutesv:
   gasoline:
-  longshot: longshot2
-  nanocaller: nano_clair3
-  clair3: nano_clair3
+  longshot: 
+  nanocaller: 
+  clair3: 
   deepvariant:
-  vep: vep
+  vep: 
   annotsv:
 
 ref_version: ''
 
 ref_genome: ''
 
-ref_hg19_path: /data2/utility/references/genomics/hs37d5.decoy.fa
+ref_hg19_path: 
 
-ref_hg38_path: /data2/utility/references/genomics/Homo_sapiens_assembly38.fasta
+ref_hg38_path:
 
 par_dorado:
   model: ''
@@ -70,9 +70,6 @@ par_alnano:
 
 par_sambam:
   adv: ''
-
-#par_mulinp:
-#  adv: ''
 
 par_srtbam:
   adv: ''
@@ -154,7 +151,7 @@ par_cla3:
   --snp_min_af: ''
   --indel_min_af: ''
   --min_mq: ''
-  --call_snp_only: '' #condition will not be TRUE/FALSE, but ENABLE/DISABLE
+  --call_snp_only: ''
   adv: ''
 
 par_deep:
