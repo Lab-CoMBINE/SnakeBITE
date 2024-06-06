@@ -16,7 +16,7 @@ To download this software, you can clone this repository on your local system, i
 
 ```sh
 git clone https://github.com/Lab-CoMBINE/SnakeBITE.git
-cd SnakeBITE
+cd path/to/SnakeBITE
 ```
 
 ### 2. Main conda environment Installation
@@ -75,7 +75,7 @@ Launch SnakeBITE GUI using the following command line:
 shiny run --reload path/to/SnakeBITE/app/app.py
 ```
 
-Congratulations: you are inside SnakeBITE now. Follow the instructions in the web browser page to build your own modular pipeline on ONT data.
+Congratulations: you are inside SnakeBITE now. Follow the instructions in the web browser page to build and launch your own modular pipeline on ONT data.
 
 ## Project Structure
 
