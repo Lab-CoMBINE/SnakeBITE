@@ -32,6 +32,11 @@ conda activate snkbt_snakemake_env
 
 From ```/path/to/SnakeBITE```, please set up each conda environment with the featured data analysis tools that you do not already have:
 
+#### Create deepvariant conda environment
+```sh
+conda env create -f envs/snkbt_deepvariantenv.yaml
+```
+
 #### Create longshot conda environment
 ```sh
 conda env create -f envs/snkbt_longshotenv.yaml
@@ -97,6 +102,7 @@ SnakeBITE/
 ├── requirements.txt                    # Extra pip dependencies
 ├── workflow/   
     ├── envs/   
+        ├── snkbt_deepvariantenv.yaml   # conda env for deepvariant tool
     │   ├── snkbt_longshotenv.yaml      # conda env for longshot tool
     │   ├── snkbt_nanoclair3env.yaml    # conda env for Nanocaller and Clair3 tools
     │   ├── snkbt_sniffles2env.yaml     # conda env for sniffles tool

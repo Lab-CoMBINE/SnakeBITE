@@ -226,7 +226,7 @@ rule snv_clair3:
         directory(working_dir + "/{sample}/snv/{sample}_clair3")
     conda:
         config["conda_envs"]["clair3"]
-    threads: paralelization_func(int(config["paral_threads"]), config)
+    threads: (paralelization_func(int(config["paral_threads"]), config)/4)
     params:
         mod = config["par_cla3"]["--model_path"],
         adv = config["par_cla3"]["adv"],
@@ -271,8 +271,15 @@ rule snv_deepvariant:
         fa_fold=os.path.dirname(config["ref_genome"])
     output:
         directory(working_dir+ "/{sample}/snv/{sample}_deepvariant")
+    #singularity: config["sing_sif"]["deepvariant"]
+    conda: config["conda_envs"]["deepvariant"]
     threads: paralelization_func(int(config["paral_threads"]), config)
     params:
+        sing_loc = config["sing_sif"]["deepvariant"],
+        bind_in = os.path.dirname(config["cstm_name"]),
+        bind_out = working_dir,
+        bind_ref = os.path.dirname(config["ref_genome"]),
+        bind_bam = os.path.dirname(input_varcall),
         adv = config["par_deep"]["adv"],
         bam_fold=os.path.dirname(input_varcall),
         par1 = config["par_deep"]["--region"],
@@ -289,18 +296,15 @@ rule snv_deepvariant:
         working_dir + "/{sample}/logs/deepvariant.log"
     shell:
         """
-        docker run \
-        -v "{params.bam_fold}":"{params.bam_fold}" \
-        -v "{output}":"{output}" \
-        -v "{input.fa_fold}":"{input.fa_fold}" \
-        kishwars/pepper_deepvariant:r0.8 \
-        run_pepper_margin_deepvariant call_variant \
-        -b "{input.bam}" \
-        -f "{input.fa}" \
-        -o "{output}" \
-        -t "{threads}" \
-        {params.par1} {params.par2} {params.par3} {params.par4} {params.par5} {params.par6} {params.par7} {params.par8} {params.par9} {params.par10} {params.adv} \
-        --ont_r10_q20
+        singularity exec --bind {params.bind_in},{params.bind_out},{params.bind_ref},{params.bind_bam} \
+	{params.sing_loc} \
+	run_pepper_margin_deepvariant call_variant \
+	-b "{input.bam}" \
+	-f "{input.fa}" \
+	-o "{output}" \
+	-t "{threads}" \
+	{params.par1} {params.par2} {params.par3} {params.par4} {params.par5} {params.par6} {params.par7} {params.par8} {params.par9} {params.par10} {params.adv} \
+	--ont_r10_q20
         """
 
 rule snv_deepvariant_vep:

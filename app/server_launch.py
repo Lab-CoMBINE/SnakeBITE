@@ -283,5 +283,5 @@ def launch_gonangen(data, snakedir, workdir, in_path, threads_num, sampsize, ref
                                     vec_op.append(op)
                             unique_vec = " ".join(vec_op)
                             unique_vec = str(unique_vec)
-                        pipe_cmd = nangenline_compiler(unique_vec, ann_sel, wrk_folder, launch_name, core_num, snakedir) 
+                        pipe_cmd = nangenline_compiler(unique_vec, ann_sel, wrk_folder, launch_name, hg19_path.get(), hg38_path.get(), in_filepath, core_num, snakedir) 
                         return subprocess.run(pipe_cmd, shell=True) 

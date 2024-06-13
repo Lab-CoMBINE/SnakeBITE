@@ -1,3 +1,5 @@
+import os
+
 def check_varcall_op(operations, op, out, outputs):
     if op in operations:
         outputs=f"{outputs} {out}"
@@ -20,11 +22,12 @@ def check_nannot_op(vec, ops):
     else:
         return
 
-def nangenline_compiler(ops, ann_vec, work_dir, cst_name, cores, snake_dir):
+def nangenline_compiler(ops, ann_vec, work_dir, cst_name, ref1, ref2, in_file, cores, snake_dir):
     selected_var_call = any(keyword in ops for keyword in ["SVIM", "Sniffles2", "cuteSV", "Gasoline", "Longshot", "NanoCaller", "Clair3", "DeepVariant"])
     annot_op = check_nannot_op(ann_vec, ["annotation", "annotsv", "vep"])
     outputs = ""
     snake_cmd = ""
+    sing_bind1 = ""
     if (selected_var_call == True):
         if annot_op == "empty":
             svim_out = f"{work_dir}/{cst_name}/sv/{cst_name}_svim"
@@ -85,5 +88,6 @@ def nangenline_compiler(ops, ann_vec, work_dir, cst_name, cores, snake_dir):
                         outputs = f"{outputs} {dorado_out}"
                     elif "ALNANO" in ops and "DORADO" not in ops:
                         outputs = f"{outputs} {minimap_out}"
-    snake_cmd = f"nohup snakemake --snakefile {snake_dir}/Snakefile --use-conda --cores {cores} --printshellcmds --keep-going --configfile={work_dir}/{cst_name}/config.yaml {outputs} >> {work_dir}/{cst_name}/log.out"
+    #bind_sing = f'--singularity-args \"--bind {work_dir}, {os.path.dirname(ref1)}, {os.path.dirname(ref2)}, {os.path.dirname(in_file)}, /data2/abimbocci\"'
+    snake_cmd = f'nohup snakemake --snakefile {snake_dir}/Snakefile --use-conda --use-singularity --cores {cores} --printshellcmds --keep-going --configfile={work_dir}/{cst_name}/config.yaml {outputs} >> {work_dir}/{cst_name}/log.out'
     return snake_cmd

@@ -44,18 +44,21 @@ conda_envs:
   sniffles:
   cutesv:
   gasoline:
-  longshot: 
-  nanocaller: 
-  clair3: 
+  longshot:
+  nanocaller:
+  clair3:
   deepvariant:
-  vep: 
+  vep:
   annotsv:
+
+sing_sif:
+  deepvariant:
 
 ref_version: ''
 
 ref_genome: ''
 
-ref_hg19_path: 
+ref_hg19_path:
 
 ref_hg38_path:
 
@@ -151,7 +154,7 @@ par_cla3:
   --snp_min_af: ''
   --indel_min_af: ''
   --min_mq: ''
-  --call_snp_only: ''
+  --call_snp_only: '' #condition will not be TRUE/FALSE, but ENABLE/DISABLE
   adv: ''
 
 par_deep:
